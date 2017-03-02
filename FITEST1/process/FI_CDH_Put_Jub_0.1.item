@@ -486,11 +486,13 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tHiveCreateTable_1" offsetLabelX="0" offsetLabelY="0" source="tHiveCreateTable_1" target="tHiveLoad_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tHDFSExist_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSExist_1" target="tHiveCreateTable_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tHDFSExist_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSExist_1" target="tRowGenerator_1">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tHDFSExist_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tHDFSExist_1" target="tHiveCreateTable_1">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tHDFSExist_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tHDFSExist_1" target="tRowGenerator_1">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRowGenerator_1" show="false"/>
