@@ -121,7 +121,9 @@
     <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;/Fixed&quot;"/>
     <elementParameter field="CHECK" name="MOVE_TO_THE_CURRENT_DIRECTORY" value="true" show="false"/>
     <elementParameter field="CHECK" name="DIR_FULL" value="false"/>
-    <elementParameter field="TABLE" name="FILES"/>
+    <elementParameter field="TABLE" name="FILES">
+      <elementValue elementRef="FILEMASK" value="&quot;*.&quot;"/>
+    </elementParameter>
     <elementParameter field="CLOSED_LIST" name="CONNECT_MODE" value="PASSIVE"/>
     <elementParameter field="CHECK" name="USE_ENCODING" value="false" show="false"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
