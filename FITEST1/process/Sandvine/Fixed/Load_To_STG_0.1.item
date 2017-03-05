@@ -145,8 +145,6 @@
   </node>
   <node componentName="tFTPGet" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFTPGet_1" show="false"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_PfsTMAHBEeeX6LjTlkwSXw" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
     <elementParameter field="TEXT" name="HOST" value="&quot;192.168.70.15&quot;"/>
@@ -160,7 +158,7 @@
     <elementParameter field="PASSWORD" name="PASSPHRASE" value="wiXuUBxiyoc5L4zXsOuoEQ==" show="false"/>
     <elementParameter field="FILE" name="KEYSTORE_FILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="PASSWORD" name="KEYSTORE_PASS" value="k0OOTVG4MsZpHb1iYbZyRw==" show="false"/>
-    <elementParameter field="DIRECTORY" name="LOCALDIR" value=""/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="&quot;E:/TempSTG&quot;"/>
     <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;/Fixed/FixedProtocol.20170213T094500.5722.udr.tgz&quot;"/>
     <elementParameter field="CHECK" name="MOVE_TO_THE_CURRENT_DIRECTORY" value="true" show="false"/>
     <elementParameter field="CLOSED_LIST" name="MODE" value="ascii"/>
@@ -168,7 +166,9 @@
     <elementParameter field="CHECK" name="APPEND" value="false"/>
     <elementParameter field="CLOSED_LIST" name="SFTPOVERWRITE" value="overwrite" show="false"/>
     <elementParameter field="CHECK" name="PERL5_REGEX" value="false"/>
-    <elementParameter field="TABLE" name="FILES"/>
+    <elementParameter field="TABLE" name="FILES">
+      <elementValue elementRef="FILEMASK" value="&quot;*&quot;"/>
+    </elementParameter>
     <elementParameter field="CLOSED_LIST" name="CONNECT_MODE" value="PASSIVE"/>
     <elementParameter field="CLOSED_LIST" name="SECURITY_MODE" value="IMPLICIT" show="false"/>
     <elementParameter field="CHECK" name="USE_ENCODING" value="false" show="false"/>
