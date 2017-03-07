@@ -32,10 +32,144 @@ public class Fixed_UDR_transformation {
      * 
      * {example} helloExemple("world") # hello world !.
      */
-    public static void helloExample(String message) {
-        if (message == null) {
-            message = "World"; //$NON-NLS-1$
-        }
-        System.out.println("Hello " + message + " !"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
+public static String QOE_VALUE(String package_speed,String sub_latency,String application_type){
+		
+		String QOE_VALUE="";
+		try{
+		
+	//	if(chact.equals("RecordType")){
+		//	QOE_VALUE="QOE_Value"; // ** add Column name in first row
+			
+	//	}else{
+		int kbps=1000; 
+		int inkbps=0;
+		 
+		String [] split_word=package_speed.split(" ", 2); 
+		 String numberOnly= split_word[1].replaceAll("[^0-9]", "");
+		 String[] wordOnly= split_word[1].split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+		 if(sub_latency.equals(" ")||sub_latency.equals("null")||sub_latency.equals("") || Integer.parseInt(sub_latency)<50){
+			 QOE_VALUE="100";
+		 }else{
+			 if(wordOnly[1].equals("Mbps")){ //** if package in Mb then its converts into Kb
+				 inkbps=Integer.parseInt(numberOnly)*kbps;
+				 if(Integer.parseInt(sub_latency)<50){
+					 QOE_VALUE= QOE_rule(inkbps,Integer.parseInt(sub_latency)*1000,application_type);
+				 }else{
+					 QOE_VALUE= QOE_rule(inkbps,Integer.parseInt(sub_latency),application_type);
+				 }
+			 }else{
+				 inkbps=Integer.parseInt(numberOnly);
+				 if(Integer.parseInt(sub_latency)<50){
+					 QOE_VALUE= QOE_rule(inkbps,Integer.parseInt(sub_latency)*1000,application_type);
+				 }else{
+					 QOE_VALUE= QOE_rule(inkbps,Integer.parseInt(sub_latency),application_type);
+				 }
+		 }
+		 }
+		// }
+		}catch(Exception e){
+			QOE_VALUE="NA";
+		}
+
+	//return package_speed+";"+sub_latency+";"+application_type;//
+		return ""+QOE_VALUE;
+	}
+	
+	// applying business rule
+	public static String QOE_rule(int inkbps,int sub_latency,String application_type){
+		String QOE_VALUE="";
+		
+		if(sub_latency>=100 && sub_latency<=200 && inkbps <=10000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="90";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="80";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="70";
+			}
+			
+		}else if(sub_latency>=100 && sub_latency<=200 && inkbps >10000 && inkbps <=50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="80";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="70";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="60";
+			}
+			
+		}else if(sub_latency>=100 && sub_latency<=200 && inkbps >50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="60";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="50";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="30";
+			}
+			
+		}else if(sub_latency>200 && sub_latency<=500 &&  inkbps <=10000){
+			
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="80";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="70";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="60";
+			}
+		}else if(sub_latency>200 && sub_latency<=500 && inkbps >10000 && inkbps <=50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="70";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="60";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="50";
+			}
+		}else if(sub_latency>200 && sub_latency<=500 && inkbps >50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="60";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="50";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="25";
+			}
+			
+		}else if (sub_latency>500 && sub_latency<=1000 &&  inkbps <=10000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="60";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="40";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="30";
+			}
+		}else if (sub_latency>500 && sub_latency<=1000 && inkbps >10000 && inkbps <=50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="50";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="30";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="10";
+			}
+		}else if (sub_latency>500 && sub_latency<=1000 && inkbps >50000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="20";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="10";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="5";
+			}
+		}else if (sub_latency>1000 && sub_latency<=3000){
+			if(application_type.equals("BulkTransfer") || application_type.equals("NetworkStorage") || application_type.equals("PeertoPeer") || application_type.equals("Miscellaneous")){
+				QOE_VALUE="10";
+			}else if (application_type.equals("Email") || application_type.equals("Gaming") || application_type.equals("WebBrowsing")){
+				QOE_VALUE="5";
+			}else if(application_type.equals("RealTimeCommunication") || application_type.equals("RealTimeEntertainment") || application_type.equals("SocialNetworking") || application_type.equals("Tunneling") || application_type.equals("")){
+				QOE_VALUE="0";
+			}
+		}else if(sub_latency>3000){
+			QOE_VALUE="0";
+		}
+		
+		
+		return QOE_VALUE;
+	}
+
 }
