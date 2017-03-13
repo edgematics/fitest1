@@ -122,7 +122,7 @@
     <elementParameter field="TABLE" name="COMMANDS">
       <elementValue elementRef="COMMAND" value="&quot;source /opt/ficlient/bigdata_env &quot;"/>
       <elementValue elementRef="COMMAND" value="&quot; kinit admin -k -t /opt/ficlient/user.keytab&quot;"/>
-      <elementValue elementRef="COMMAND" value="&quot;hadoop fs -cat /user/admin/sandvine/STG/fixedudr/&quot;+((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;))+&quot;  | gzip -d | sed '1d' | hadoop fs -appendToFile - /user/admin/sandvine/STG/fixedudr/&quot;+context.file_name"/>
+      <elementValue elementRef="COMMAND" value="&quot;hadoop fs -cat /user/admin/sandvine/STG/fixedudr/&quot;+((String)globalMap.get(&quot;tFileList_3_CURRENT_FILE&quot;))+&quot;  | gzip -d | sed '1d' | hadoop fs -appendToFile - /user/admin/sandvine/STG/fixedudr/&quot;+context.file_name"/>
     </elementParameter>
     <elementParameter field="CHECK" name="USE_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="TIMEOUT" value="60" show="false"/>
