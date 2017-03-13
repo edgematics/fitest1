@@ -185,7 +185,8 @@
     <elementParameter field="PASSWORD" name="PASSPHRASE" value="wiXuUBxiyoc5L4zXsOuoEQ==" show="false"/>
     <elementParameter field="TEXT" name="COMMANDSEPARATOR" value="&quot;;&quot;"/>
     <elementParameter field="TABLE" name="COMMANDS">
-      <elementValue elementRef="COMMAND" value="&quot;cd /&quot;"/>
+      <elementValue elementRef="COMMAND" value="&quot;source /opt/ficlient/bigdata_env&quot;"/>
+      <elementValue elementRef="COMMAND" value="&quot;kinit admin -k -t /opt/ficlient/user.keytab&quot;"/>
       <elementValue elementRef="COMMAND" value="&quot;hadoop version&quot;"/>
     </elementParameter>
     <elementParameter field="CHECK" name="USE_TIMEOUT" value="false"/>
