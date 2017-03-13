@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="filename" prompt="filename?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="file_name" prompt="file_name?" promptNeeded="false" type="id_String" value=""/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -193,6 +193,7 @@
       <elementValue elementRef="COMMAND" value="&quot;source /opt/ficlient/bigdata_env &quot;"/>
       <elementValue elementRef="COMMAND" value="&quot; kinit admin -k -t /opt/ficlient/user.keytab&quot;"/>
       <elementValue elementRef="COMMAND" value="&quot;hadoop version&quot;"/>
+      <elementValue elementRef="COMMAND" value="&quot;hadoop fs -cat /user/admin/sandvine/STG/fixedudr/&quot;+((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;))+&quot;  | gzip -d | sed '1d' | hadoop fs -appendToFile - /user/admin/sandvine/STG/fixedudr/&quot;+context.file_name"/>
     </elementParameter>
     <elementParameter field="CHECK" name="USE_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="TIMEOUT" value="60" show="false"/>
@@ -294,6 +295,9 @@
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate3" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tHDFSPut_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSPut_1" target="tSSH_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tFileList_2" offsetLabelX="0" offsetLabelY="0" source="tFileList_2" target="tHDFSPut_2">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
