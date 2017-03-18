@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="source_name" prompt="source_name?" promptNeeded="false" type="id_String" value=""/>
-    <contextParameter comment="" name="root_file" prompt="root_file?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="source_name" prompt="source_name?" promptNeeded="false" type="id_String" value="Sandvine"/>
+    <contextParameter comment="" name="root_file" prompt="root_file?" promptNeeded="false" type="id_String" value="FixedUDR"/>
     <contextParameter comment="" name="new3" prompt="new3?" promptNeeded="false" type="id_String" value=""/>
   </context>
   <parameters>
@@ -182,7 +182,7 @@
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
     <elementParameter field="LABEL" name="PARQUET_NOTE" value="Parquet is only supported if the distribution uses embedded&#xA;&#x9;&#x9;&#x9;&#x9;Hive version 0.10 or later.&#xA;&#x9;&#x9;&#x9;" show="false"/>
     <elementParameter field="CHECK" name="USE_PARQUET" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from batch_master&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from batch_master where source_name='&quot;+context.source_name+&quot;' and root_file='&quot;+context.root_file+&quot;'&quot;"/>
     <elementParameter field="CHECK" name="STORE_BY_HBASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="ZOOKEEPER_QUORUM" value="&quot;localhost&quot;" show="false"/>
     <elementParameter field="TEXT" name="ZOOKEEPER_CLIENT_PORT" value="&quot;2181&quot;" show="false"/>
