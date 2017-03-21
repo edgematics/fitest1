@@ -396,7 +396,7 @@
   </node>
   <node componentName="tFileExist" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-384" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileExist_2" show="false"/>
-    <elementParameter field="FILE" name="FILE_NAME" value="&quot;E:/TempSTG/&quot;+((String)globalMap.get(&quot;tFTPFileList_2_CURRENT_FILE&quot;))"/>
+    <elementParameter field="FILE" name="FILE_NAME" value="context.file_path_local+&quot;&quot;+context.source_name_path+&quot;&quot;+context.file_name_path+&quot;500/&quot;+((String)globalMap.get(&quot;tFTPFileList_2_CURRENT_FILE&quot;))"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <node componentName="tFTPGet" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-256" posY="128">
