@@ -4,9 +4,10 @@
     <contextParameter comment="" name="file_name_000" prompt="file_name_000?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="file_name_500" prompt="file_name_500?" promptNeeded="false" type="id_String" value=""/>
     <contextParameter comment="" name="file_path_local" prompt="file_path_local?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
-    <contextParameter comment="" name="FILE_DESC_local" prompt="FILE_DESC_local?" promptNeeded="false" repositoryContextId="_mXeNUA4kEee82NNChe29TA" type="id_String" value="&quot;/data/&quot;"/>
     <contextParameter comment="" name="source_name_path" prompt="source_name_path?" promptNeeded="false" type="id_String" value="&quot;sandvine/&quot;"/>
     <contextParameter comment="" name="file_name_path" prompt="file_name_path?" promptNeeded="false" type="id_String" value="&quot;fixedudr/&quot;"/>
+    <contextParameter comment="" name="FILE_DESC_ftp_host" prompt="FILE_DESC_ftp_host?" promptNeeded="false" repositoryContextId="_mXeNUA4kEee82NNChe29TA" type="id_String" value="&quot;192.168.70.15&quot;"/>
+    <contextParameter comment="" name="FILE_DESC_local" prompt="FILE_DESC_local?" promptNeeded="false" repositoryContextId="_mXeNUA4kEee82NNChe29TA" type="id_String" value="&quot;/data/&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="640" show="false"/>
@@ -293,6 +294,8 @@
   </node>
   <node componentName="tFTPGet" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-256" posY="-96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFTPGet_1" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_PfsTMAHBEeeX6LjTlkwSXw" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
     <elementParameter field="TEXT" name="HOST" value="&quot;192.168.70.15&quot;"/>
@@ -398,6 +401,8 @@
   </node>
   <node componentName="tFTPGet" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-256" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFTPGet_2" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_PfsTMAHBEeeX6LjTlkwSXw" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
     <elementParameter field="TEXT" name="HOST" value="&quot;192.168.70.15&quot;"/>
