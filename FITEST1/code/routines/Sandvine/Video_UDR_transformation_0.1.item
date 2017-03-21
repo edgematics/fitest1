@@ -1,0 +1,177 @@
+package routines;
+
+/*
+ * user specification: the function's comment should contain keys as follows: 1. write about the function's comment.but
+ * it must be before the "{talendTypes}" key.
+ * 
+ * 2. {talendTypes} 's value must be talend Type, it is required . its value should be one of: String, char | Character,
+ * long | Long, int | Integer, boolean | Boolean, byte | Byte, Date, double | Double, float | Float, Object, short |
+ * Short
+ * 
+ * 3. {Category} define a category for the Function. it is required. its value is user-defined .
+ * 
+ * 4. {param} 's format is: {param} <type>[(<default value or closed list values>)] <name>[ : <comment>]
+ * 
+ * <type> 's value should be one of: string, int, list, double, object, boolean, long, char, date. <name>'s value is the
+ * Function's parameter name. the {param} is optional. so if you the Function without the parameters. the {param} don't
+ * added. you can have many parameters for the Function.
+ * 
+ * 5. {example} gives a example for the Function. it is optional.
+ */
+public class Video_UDR_transformation {
+
+    /**
+     * helloExample: not return value, only print "hello" + message.
+     * 
+     * 
+     * {talendTypes} String
+     * 
+     * {Category} User Defined
+     * 
+     * {param} string("world") input: The string need to be printed.
+     * 
+     * {example} helloExemple("world") # hello world !.
+     */
+public static String QOE_VALUE(String EncodedHRes,String ClientDeviceType,String ResponseLatency,String StallCount,String StallTime,String VideoDuration,String downShiftCount){
+		
+		double QOV_VALUE=Double.parseDouble(EncodedHRes(EncodedHRes,ClientDeviceType))+ Double.parseDouble(ResponseLatency(ResponseLatency))+Double.parseDouble(StallCount(StallCount))+Double.parseDouble(StallTime(StallTime,VideoDuration))+Double.parseDouble(downShiftCount(downShiftCount));
+		return ""+QOV_VALUE;
+	}
+public static String EncodedHRes(String EncodedHRes,String ClientDeviceType){
+	String QOE_VALUE="";
+	
+	try{
+		
+			if(EncodedHRes.equals(null) || EncodedHRes.equals("")){
+				QOE_VALUE="15";
+			}else if(Integer.parseInt(EncodedHRes)>640){
+				QOE_VALUE="15";
+			}else if(Integer.parseInt(EncodedHRes)>=481 && Integer.parseInt(EncodedHRes)<=640){
+				QOE_VALUE="15";
+			}else if(Integer.parseInt(EncodedHRes)>=481 && Integer.parseInt(EncodedHRes)<=640 && ClientDeviceType=="Handheld"){
+				QOE_VALUE="12";
+			}else if(Integer.parseInt(EncodedHRes)>=481 && Integer.parseInt(EncodedHRes)<=640 && ClientDeviceType=="PC"){
+				QOE_VALUE="9";
+			}else if(Integer.parseInt(EncodedHRes)>=353 && Integer.parseInt(EncodedHRes)<=480 && ClientDeviceType=="Handheld"){
+				QOE_VALUE="9";
+			}else if(Integer.parseInt(EncodedHRes)>=353 && Integer.parseInt(EncodedHRes)<=480 && ClientDeviceType=="PC"){
+				QOE_VALUE="7.5";
+			}else if(Integer.parseInt(EncodedHRes)>=320 && Integer.parseInt(EncodedHRes)<=352 && ClientDeviceType=="Handheld"){
+				QOE_VALUE="4.5";
+			}else if(Integer.parseInt(EncodedHRes)>=320 && Integer.parseInt(EncodedHRes)<=352 && ClientDeviceType=="PC"){
+				QOE_VALUE="2.25";
+			}else if(Integer.parseInt(EncodedHRes)<320){
+				QOE_VALUE="0";
+			}
+		
+	}catch(Exception e){
+		QOE_VALUE="NA";
+	}
+	
+	return QOE_VALUE;
+}
+
+public static String ResponseLatency(String ResponseLatency){
+	String QOE_VALUE="";
+	try{
+		if(ResponseLatency.equals(null) || ResponseLatency.equals("")){
+			QOE_VALUE="10";
+		}else if(Integer.parseInt(ResponseLatency)>=0 && Integer.parseInt(ResponseLatency)<=50){
+			QOE_VALUE="9.5";
+		}else if(Integer.parseInt(ResponseLatency)>=51 && Integer.parseInt(ResponseLatency) <=150){
+			QOE_VALUE="9";
+		}else if(Integer.parseInt(ResponseLatency)>=151 && Integer.parseInt(ResponseLatency) <=250){
+			QOE_VALUE="8.5";
+		}else if(Integer.parseInt(ResponseLatency)>=251 && Integer.parseInt(ResponseLatency) <=350){
+			QOE_VALUE="7.5";
+		}else if (Integer.parseInt(ResponseLatency)>=351 && Integer.parseInt(ResponseLatency) <=500){
+			QOE_VALUE="6.5";
+		}else if (Integer.parseInt(ResponseLatency)>=501 && Integer.parseInt(ResponseLatency) <=800){
+			QOE_VALUE="5";	
+		}else if(Integer.parseInt(ResponseLatency)>=801 && Integer.parseInt(ResponseLatency) <=2000){
+			QOE_VALUE="1";
+		}else if(Integer.parseInt(ResponseLatency)>2000){
+			QOE_VALUE="0";
+		}
+		
+	}catch(Exception e){
+		QOE_VALUE="";
+	}
+	return QOE_VALUE;
+}
+public static String StallCount(String StallCount){
+	String QOE_VALUE="";
+	try{
+		 if(StallCount.equals(null) || StallCount.equals("") || Integer.parseInt(StallCount)==0){
+			 QOE_VALUE="40";
+		 }else if(Integer.parseInt(StallCount)==1){
+			 QOE_VALUE="20";
+		 }else if(Integer.parseInt(StallCount)==2){
+			QOE_VALUE="12";
+		}else if(Integer.parseInt(StallCount)>=3 && Integer.parseInt(StallCount)<4){
+			QOE_VALUE="6";
+		}else if (Integer.parseInt(StallCount)>=4 && Integer.parseInt(StallCount)<8){
+			QOE_VALUE="0";
+		}else if(Integer.parseInt(StallCount)>8){
+			QOE_VALUE="0";
+		}
+	}catch(Exception e){
+		QOE_VALUE="";
+	}
+	return QOE_VALUE;
+}
+public static String StallTime(String StallTime,String VideoDuration){
+	int ratio=Integer.parseInt(StallTime)/Integer.parseInt(VideoDuration);
+	String QOE_VALUE="";
+	try{
+		if(StallTime.equals(null) || StallTime.equals("") && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="20";
+		}else if (Integer.parseInt(StallTime)<=300 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="20";
+		}else if(Integer.parseInt(StallTime)>=301 && Integer.parseInt(StallTime)<=700 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="18";
+		}else if(Integer.parseInt(StallTime)>=701 && Integer.parseInt(StallTime)<=1000 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="14";
+		}else if(Integer.parseInt(StallTime)>=1001 && Integer.parseInt(StallTime)<=2000 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="8";
+		}else if(Integer.parseInt(StallTime)>=2001 && Integer.parseInt(StallTime)<=5000 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="4";
+		}else if(Integer.parseInt(StallTime)>=5001 && VideoDuration.equals(null) || VideoDuration.equals("")){
+			QOE_VALUE="0";
+		}else if(Integer.parseInt(StallTime)>0 && Integer.parseInt(VideoDuration)>0 && ratio>=0 && ratio<=5){
+			QOE_VALUE="18";
+		}else if(Integer.parseInt(StallTime)>0 && Integer.parseInt(VideoDuration)>0 && ratio>=6 && ratio<=10){
+			QOE_VALUE="10";
+		}else if(Integer.parseInt(StallTime)>0 && Integer.parseInt(VideoDuration)>0 && ratio>=11 && ratio<=20){
+			QOE_VALUE="6";
+		}else if(Integer.parseInt(StallTime)>0 && Integer.parseInt(VideoDuration)>0 && ratio>=21 && ratio<=30){
+			QOE_VALUE="2";
+		}else if(Integer.parseInt(StallTime)>0 && Integer.parseInt(VideoDuration)>0 && ratio>30){
+			QOE_VALUE="0";
+		}
+	}catch(Exception e){
+		QOE_VALUE="";
+	}
+	return QOE_VALUE;
+}
+public static String downShiftCount(String downShiftCount){
+	String QOE_VALUE="";
+	try{
+		if(downShiftCount.equals(null) || downShiftCount.equals("") || Integer.parseInt(downShiftCount)==0){
+			QOE_VALUE="15";
+		}else if(Integer.parseInt(downShiftCount)==1){
+			QOE_VALUE="10.5";
+		}else if(Integer.parseInt(downShiftCount)==2){
+			QOE_VALUE="6";
+		}else if(Integer.parseInt(downShiftCount)==3){
+			QOE_VALUE="1.5";
+		}else if(Integer.parseInt(downShiftCount)>3){
+			QOE_VALUE="0";
+		}
+	}catch(Exception e){
+		QOE_VALUE="";
+	}
+	return QOE_VALUE;
+}
+
+}
