@@ -212,7 +212,7 @@
   </node>
   <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="-128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileDelete_1" show="false"/>
-    <elementParameter field="FILE" name="FILENAME" value="&quot;E:/TempSTG/000/&quot;+((String)globalMap.get(&quot;tFileList_3_CURRENT_FILE&quot;))"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.file_path_local+&quot;&quot;+context.source_name_path+&quot;&quot;+context.file_name_path+&quot;000/&quot;+((String)globalMap.get(&quot;tFileList_3_CURRENT_FILE&quot;))"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="&quot;C:/Software/Talend/workspace/delete_folder&quot;" show="false"/>
     <elementParameter field="TEXT" name="PATH" value="&quot;C:/Software/Talend/workspace/delete_folder or delete_file&quot;" show="false"/>
     <elementParameter field="CHECK" name="FAILON" value="true"/>
