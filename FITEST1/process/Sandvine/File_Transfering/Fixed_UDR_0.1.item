@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
-  <context confirmationNeeded="false" name="Default">
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Dev" jobType="Standard">
+  <context confirmationNeeded="false" name="Dev">
     <contextParameter comment="" name="file_name_000" prompt="file_name_000?" promptNeeded="false" type="id_String" value=""/>
-    <contextParameter comment="" name="file_name_00" prompt="file_name_00?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="file_name_500" prompt="file_name_500?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="file_path_local" prompt="file_path_local?" promptNeeded="false" type="id_String" value="&quot;&quot;"/>
+    <contextParameter comment="" name="FILE_DESC_local" prompt="FILE_DESC_local?" promptNeeded="false" repositoryContextId="_mXeNUA4kEee82NNChe29TA" type="id_String" value="&quot;/data/&quot;"/>
+    <contextParameter comment="" name="source_name_path" prompt="source_name_path?" promptNeeded="false" type="id_String" value="&quot;sandvine/&quot;"/>
+    <contextParameter comment="" name="file_name_path" prompt="file_name_path?" promptNeeded="false" type="id_String" value="&quot;fixedudr/&quot;"/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="640" show="false"/>
@@ -499,7 +503,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String file_name = ((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;));&#xA;&#xA;context.file_name_00=file_name.substring(0,file_name.lastIndexOf('.'));&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String file_name = ((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;));&#xA;&#xA;context.file_name_500=file_name.substring(0,file_name.lastIndexOf('.'));&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
@@ -520,7 +524,7 @@
     <elementParameter field="TABLE" name="COMMANDS">
       <elementValue elementRef="COMMAND" value="&quot;source /opt/ficlient/bigdata_env &quot;"/>
       <elementValue elementRef="COMMAND" value="&quot; kinit admin -k -t /opt/ficlient/user.keytab&quot;"/>
-      <elementValue elementRef="COMMAND" value="&quot;hadoop fs -cat /user/admin/sandvine/STG/fixedudr/&quot;+((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;))+&quot;  | gzip -d | sed '1d' | hadoop fs -appendToFile - /user/admin/sandvine/STG/fixedudr/&quot;+context.file_name_00"/>
+      <elementValue elementRef="COMMAND" value="&quot;hadoop fs -cat /user/admin/sandvine/STG/fixedudr/&quot;+((String)globalMap.get(&quot;tFileList_1_CURRENT_FILE&quot;))+&quot;  | gzip -d | sed '1d' | hadoop fs -appendToFile - /user/admin/sandvine/STG/fixedudr/&quot;+context.file_name_500"/>
     </elementParameter>
     <elementParameter field="CHECK" name="USE_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="TIMEOUT" value="60" show="false"/>
