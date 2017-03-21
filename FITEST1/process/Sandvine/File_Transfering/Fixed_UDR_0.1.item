@@ -207,7 +207,7 @@
   </node>
   <node componentName="tFileExist" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-384" posY="-96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileExist_1" show="false"/>
-    <elementParameter field="FILE" name="FILE_NAME" value="&quot;E:/TempSTG/&quot;+((String)globalMap.get(&quot;tFTPFileList_1_CURRENT_FILE&quot;))"/>
+    <elementParameter field="FILE" name="FILE_NAME" value="context.file_path_local+&quot;&quot;+context.source_name_path+&quot;&quot;+context.file_name_path+&quot;000/&quot;+((String)globalMap.get(&quot;tFTPFileList_1_CURRENT_FILE&quot;))"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="544" posY="-128">
